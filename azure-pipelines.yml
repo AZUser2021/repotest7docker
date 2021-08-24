@@ -10,9 +10,9 @@ pool:
 variables:
           imageName: 'pipelines-javascript-docker'
 steps:
-        - task: Docker@2
-          displayName: Build an image
-          inputs:
-            repository: $(imageName)
-            command: build
-            Dockerfile: app/Dockerfile
+      
+- task: Docker@2
+  inputs:
+    repository: 'https://hub.docker.com/r/oussamaaccoundced/repository2408'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
