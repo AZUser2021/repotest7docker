@@ -1,7 +1,5 @@
-name : Docker-CI
+
 trigger:
-  branches:
-    include:
       - master
  
 pool:
@@ -23,11 +21,9 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Build an image'
-        dockerFile: '**/Dockerfile'
+        dockerFile: App/Dockerfile
         imageName: '$(ImageName)'
-        includeLatestTag: true
-        useDefaultContext: false
-        buildContext: '.'
+     
      
     - task: Docker@1
       displayName: 'Push the Docker image to Dockerhub'
@@ -36,4 +32,3 @@ stages:
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Push an image'
         imageName: '$(ImageName)'
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
