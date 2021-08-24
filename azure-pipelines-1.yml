@@ -21,7 +21,7 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Build an image'
-        dockerFile: App/Dockerfile
+        dockerFile: app/Dockerfile
         imageName: '$(ImageName)'
      
      
